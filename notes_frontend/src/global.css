@@ -6,10 +6,15 @@
  */
 
 :root {
-  --primary-color: #000000;
-  --secondary-color: #333333;
-  --accent-color: #0078d4;
+  --primary-color: #3f51b5;
+  --secondary-color: #f50057;
+  --accent-color: #ffeb3b;
   --background-color: #ffffff;
+  --sidebar-width: 245px;
+  --sidebar-width-mobile: 64px;
+  --nav-height: 56px;
+  --border-radius: 12px;
+  --shadow: 0 2px 8px rgba(63,81,181,0.08);
 }
 
 html {

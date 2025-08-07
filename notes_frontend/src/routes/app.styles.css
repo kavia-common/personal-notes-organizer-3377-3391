@@ -1,0 +1,372 @@
+/* Layout containers */
+.notes-app-main-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color);
+}
+.notes-navbar {
+  display: flex;
+  align-items: center;
+  height: var(--nav-height);
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 500;
+  padding: 0 2rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.notes-navbar .notes-navbar-title {
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+  flex: 1 1;
+}
+@media (max-width: 600px) {
+  .notes-navbar {
+    padding: 0 1rem;
+  }
+  .notes-navbar .notes-navbar-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Sidebar/folders */
+.notes-layout-content {
+  flex: 1 1;
+  display: flex;
+  min-height: 0;
+  height: calc(100vh - var(--nav-height));
+  background: var(--background-color);
+}
+.notes-sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: #f6f7f9;
+  border-right: 1px solid #ececec;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s;
+  padding: 0.5rem 0 0;
+  box-shadow: var(--shadow);
+  z-index: 9;
+}
+@media (max-width: 900px) {
+  .notes-sidebar {
+    width: var(--sidebar-width-mobile);
+    min-width: var(--sidebar-width-mobile);
+    overflow-x: hidden;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.notes-folders-header {
+  font-size: 1.05rem;
+  padding: 0.5rem 1.3rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background: transparent;
+  margin-bottom: 0.25rem;
+}
+.notes-folderlist {
+  flex: 1 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0 0.5rem;
+  list-style: none;
+}
+.notes-folder {
+  cursor: pointer;
+  padding: 0.4rem 1.2rem 0.4rem 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 0.15rem;
+  color: var(--primary-color);
+  transition: background 0.16s, color 0.16s;
+  position: relative;
+}
+.notes-folder.active,
+.notes-folder:hover {
+  background: var(--accent-color);
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.notes-add-folder-btn {
+  color: var(--secondary-color);
+  background: none;
+  border: none;
+  padding: 0.3rem 1.2rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.11rem;
+  transition: color 0.15s;
+}
+.notes-add-folder-btn:hover {
+  color: #fff;
+  background: var(--secondary-color);
+  border-radius: var(--border-radius);
+}
+
+/* Main: notes list/editor */
+.notes-main-area {
+  display: flex;
+  flex: 1 1;
+  gap: 0;
+  min-width: 0;
+  background: var(--background-color);
+}
+
+.notes-list-panel {
+  width: 355px;
+  min-width: 230px;
+  max-width: 420px;
+  background: #f8fafd;
+  border-right: 1px solid #ececec;
+  overflow-y: auto;
+  transition: background 0.14s;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 900px) {
+  .notes-list-panel {
+    width: 120px;
+    min-width: 90px;
+  }
+}
+.notes-search-bar-container {
+  width: 100%;
+  background: #fafcff;
+  border-bottom: 1px solid #ececec;
+  padding: 0.85rem 1rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.notes-search-bar {
+  flex: 1 1;
+  border: none;
+  background: #e9edf7;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  outline: none;
+  color: var(--primary-color);
+  font-weight: 400;
+}
+
+.notes-note-list {
+  flex: 1 1;
+  padding: 0.15rem 0.1rem 0.15rem 0.25rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.notes-note-item {
+  cursor: pointer;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 0.13rem;
+  color: var(--primary-color);
+  background: transparent;
+  transition: background 0.14s,color 0.15s;
+  word-break: break-word;
+  font-size: 1.04rem;
+  border: none;
+  position: relative;
+}
+.notes-note-item.active,
+.notes-note-item:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.notes-note-item .note-date {
+  display: block;
+  font-size: 0.83rem;
+  color: #757575;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.notes-add-btn {
+  color: #fff;
+  background: var(--secondary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.43rem 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0.6rem 0.95rem;
+  transition: background 0.14s;
+}
+.notes-add-btn:hover {
+  background: var(--primary-color);
+  color: var(--accent-color);
+}
+
+/* Editor panel */
+.notes-editor-panel {
+  flex: 1 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  align-items: stretch;
+}
+.notes-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem 0.8rem;
+  background: transparent;
+  gap: 0.6rem;
+}
+.notes-editor-title-input {
+  width: 82%;
+  font-size: 1.35rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid var(--accent-color);
+  padding: 0.38rem 0.15rem;
+  margin-bottom: 0.6rem;
+  outline: none;
+  color: var(--primary-color);
+  border-radius: 2px;
+  transition: border 0.13s;
+}
+.notes-editor-title-input:focus {
+  border-bottom: 2px solid var(--secondary-color);
+}
+.notes-editor-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+.notes-btn {
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  padding: 0.33rem 1.1rem;
+  font-size: 1.03rem;
+  cursor: pointer;
+  transition: background 0.13s,color 0.13s;
+}
+.notes-btn.secondary {
+  background: var(--secondary-color);
+}
+.notes-btn.danger {
+  background: #d32f2f;
+}
+.notes-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.notes-editor-content-input {
+  flex: 1 1;
+  font-size: 1.08rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--primary-color);
+  min-height: 200px;
+  resize: vertical;
+}
+@media (max-width: 900px) {
+  .notes-editor-header,
+  .notes-editor-content-input {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+}
+@media (max-width: 700px) {
+  .notes-layout-content,
+  .notes-main-area {
+    flex-direction: column;
+  }
+  .notes-sidebar {
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    border-bottom: 1px solid #ececec;
+    min-height: var(--sidebar-width-mobile);
+    max-height: 58px;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 520px) {
+  .notes-editor-header {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+    padding: 0.7rem 0.5rem 0.63rem;
+  }
+}
+
+/* Auth panel/modal */
+.notes-auth-modal {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin: 2.5rem auto;
+  padding: 2.5rem 2.5rem 2.2rem;
+  max-width: 350px;
+  border: 1px solid #ececec;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.notes-auth-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+  color: var(--primary-color);
+}
+.notes-auth-input {
+  background: #f3f3f7;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  padding: 0.62rem 0.9rem;
+  font-size: 1.05rem;
+  color: var(--primary-color);
+  margin-bottom: 1.1rem;
+  outline: none;
+  transition: border 0.14s;
+}
+.notes-auth-input:focus {
+  border: 1.5px solid var(--primary-color);
+}
+.notes-auth-btn {
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  padding: 0.51rem 1.2rem;
+  font-size: 1.09rem;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  transition: background 0.14s;
+}
+.notes-auth-alt-switch {
+  color: var(--secondary-color);
+  background: none;
+  border: none;
+  font-size: 0.98rem;
+  margin-top: 17px;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+}
+@media (max-width: 520px) {
+  .notes-auth-modal {
+    padding: 1.2rem 0.85rem 1.1rem;
+    margin: 1.5rem 0.4rem;
+    max-width: 95vw;
+  }
+}
